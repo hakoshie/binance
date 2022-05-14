@@ -31,11 +31,9 @@ def main():
         if coin_amount>0 and balance["asset"] not in not_avilable_tickers:
             name=balance["asset"]+"USDT"
             ticker = binance_set.get_ticker(name)
-            # print(balance["asset"],"$"+str(f'{coin_amount*float(ticker["lastPrice"]):.2f}'))
             ticks_and_price.append((balance["asset"],coin_amount*float(ticker["lastPrice"])))
             sum_usdt+=coin_amount*float(ticker["lastPrice"])
         elif balance["asset"]=="USDT":
-            # print(balance["asset"],"$"+str(f'{coin_amount:.2f}'))
             ticks_and_price.append((balance["asset"],coin_amount))
             sum_usdt+=coin_amount
     ticks_and_price.sort(key=lambda x: x[1],reverse=True)
